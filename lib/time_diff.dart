@@ -38,7 +38,7 @@ class MessageTimeDifference {
   static String getMonthsAndDays(Duration timeDiff) {
     int months = timeDiff.inDays ~/ 30;
     int days = timeDiff.inDays % 30;
-
+  
     String diffMonth = "";
     if (months > 2) {
       diffMonth = "$months months";
@@ -49,11 +49,13 @@ class MessageTimeDifference {
     String diffDays = "";
     if (days == 0) {
       // just ignore
-    } else if (days > 2) {
-      diffDays = " and a $diffDays day ago";
+    } else if (days == 1) {
+      diffDays = " and a $days day ago";
     } else {
-      diffMonth = " , $diffDays days ago";
+      diffDays = " , $days days ago";
     }
+
+  
 
     return "$diffMonth$diffDays";
   }

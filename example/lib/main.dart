@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   Widget _temDiffernceBetween() {
     DateTime from = DateTime.now().subtract(Duration(days: 30));
     DateTime to = DateTime.now().add(Duration(days: 5));
-
+    print("object ${HumanTime.timeBetween(from: from, to: to)}");
     return Text(HumanTime.timeBetween(from: from, to: to));
   }
 
@@ -55,20 +55,22 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 20),
-            Text('Time stream :\n'),
-            _timeStream(),
-            SizedBox(height: 20),
-            Text('Time difference :\n'),
-            _temDiffernceBetween(),
-            SizedBox(height: 20),
-            Text('Time From :\n'),
-            _temDiffernceFrom(),
-          ],
+        body: Center(
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 20),
+              Text('Time stream :\n'),
+              _timeStream(),
+              SizedBox(height: 20),
+              Text('Time difference :\n'),
+              _temDiffernceBetween(),
+              SizedBox(height: 20),
+              Text('Time From :\n'),
+              _temDiffernceFrom(),
+            ],
+          ),
         ),
       ),
     );
