@@ -15,6 +15,13 @@ Flutter plugin to show difference in time that humans can easily understand.
 * `Stream<String> timeFromStream (DateTime from)`
     Calculates the time difference between  the time given and the local time(Based on system time), but with a time out that will keep emiting changes in time over durations of time.
 
+# Plans 
+add time diff based on time zone.
+1. Set timezones as an enum  example :
+        * EAT -East Africa time
+        * India Standard Time (IST)
+        * Coordinated Universal Time
+2. Method calls to take in the time and caluclate diff human time.
 
 
 ## Contributers.
