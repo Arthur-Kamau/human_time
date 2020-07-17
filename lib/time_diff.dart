@@ -1,7 +1,5 @@
 class MessageTimeDifference {
-  static String timeDifToHumanReadable( Duration timeDiff) {
-  
-
+  static String timeDifToHumanReadable(Duration timeDiff) {
     if (timeDiff.inSeconds <= 0) {
       return "now";
     } else if (timeDiff.inSeconds > 0 && timeDiff.inSeconds < 60) {
@@ -18,22 +16,45 @@ class MessageTimeDifference {
       return "${timeDiff.inDays} days ago";
     } else if (timeDiff.inDays == 7) {
       return "a week ago";
-    } else if (timeDiff.inDays >  7  &&  timeDiff.inDays < 14 ) {
+    } else if (timeDiff.inDays > 7 && timeDiff.inDays < 14) {
       return "${timeDiff.inDays} days ago";
-    }  else if (timeDiff.inDays == 14) {
+    } else if (timeDiff.inDays == 14) {
       return "two weeks ago";
-    }else if (timeDiff.inDays  >  14 &&  timeDiff.inDays < 21 ) {
+    } else if (timeDiff.inDays > 14 && timeDiff.inDays < 21) {
       return "${timeDiff.inDays} days ago";
     } else if (timeDiff.inDays == 21) {
       return "three weeks ago";
-    }  else if (timeDiff.inDays > 21 && timeDiff.inDays < 30) {
+    } else if (timeDiff.inDays > 21 && timeDiff.inDays < 30) {
       return "${timeDiff.inDays} days ago";
     } else if (timeDiff.inDays > 30 && timeDiff.inDays < 365) {
-      return "${timeDiff.inDays / 30.toInt()} months ago";
+      return getMonthsAndDays(timeDiff);
     } else if (timeDiff.inDays > 365) {
       return "${timeDiff.inDays / 365} years ago";
     } else {
       return "long ago";
     }
+  }
+
+  static String getMonthsAndDays(Duration timeDiff) {
+    int months = timeDiff.inDays ~/ 30;
+    int days = timeDiff.inDays % 30;
+
+    String diffMonth = "";
+    if (months > 2) {
+      diffMonth = "$months months";
+    } else {
+      diffMonth = "$months month";
+    }
+
+    String diffDays = "";
+    if (days == 0) {
+      // just ignore
+    } else if (days > 2) {
+      diffDays = " and a $diffDays day ago";
+    } else {
+      diffMonth = " , $diffDays days ago";
+    }
+
+    return "$diffMonth$diffDays";
   }
 }
