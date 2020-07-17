@@ -12,17 +12,17 @@ class HumanTime {
     return version;
   }
 
-  String timeBetween({@required DateTime from, @required DateTime to}) {
+ static String timeBetween({@required DateTime from, @required DateTime to}) {
     Duration timeDiff = from.difference(to);
     return MessageTimeDifference.timeDifToHumanReadable(timeDiff);
   }
 
-  String timeFrom(DateTime from) {
+ static String timeFrom(DateTime from) {
     Duration timeDiff = DateTime.now().difference(from);
     return MessageTimeDifference.timeDifToHumanReadable(timeDiff);
   }
 
-  Stream<String> timeFromStream(DateTime from) {
+ static Stream<String> timeFromStream(DateTime from) {
     StreamController controller = new StreamController<String>();
     // runs every 1 minute
     Timer.periodic(new Duration(minutes: 1), (timer) {
